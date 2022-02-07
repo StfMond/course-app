@@ -7,6 +7,36 @@
   pointer-events: none;
 }
 
+body {
+	font-family: sans-serif;
+	text-align: center;
+	padding: 2rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	transition: all 725ms ease-in-out;
+}
+
+
+.main-container {
+	margin-top: 2rem;
+	padding: 1rem;
+	border: 1px solid #5df;
+}
+
+.main-header {
+	display: inline-flex;
+	justify-content: space-between;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 1rem;
+}
+
+.main-header-button {
+	width: 100%;
+	display: inline-flex;
+	justify-content: flex-end;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
