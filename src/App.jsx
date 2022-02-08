@@ -13,7 +13,7 @@ const App = () => {
 	const [searchTerm, setSearchTerm] = React.useState('');
 	const [searchResults, setSearchResults] = React.useState([]);
 	const [IsMainContainer, setIsMainContainer] = React.useState(true);
-	const [newAuthors, setNewAuthors] = useState([]);
+	const [courseAuthors, setCourseAuthors] = useState([]);
 	const [authorsToAdd, setAuthorsToAdd] = useState([]);
 
 	const onSearchChange = (e) => {
@@ -23,7 +23,7 @@ const App = () => {
 	const onSearchClick = () => {
 		const results = courses.filter(
 			(course) =>
-				course.title.toLowerCase().includes(searchTerm) ||
+				course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
 				course.id === searchTerm
 		);
 		setSearchResults(results);
@@ -34,18 +34,16 @@ const App = () => {
 		if (!flag) setAuthorsToAdd(authors);
 	};
 
-	const createCourse = () => {
+	const onCreateCourse = (newCourse) => {
 		isMainComponent(true);
-		// if (authorsToAdd.length < 0) setAuthorsToAdd(authors);
+		setCourses([...courses, newCourse]);
 	};
 
 	const onAddAuthor = (author) => {
-		const index = newAuthors.findIndex((ob) => ob.id === author.id);
+		const index = courseAuthors.findIndex((ob) => ob.id === author.id);
 
 		if (index === -1) {
-			setNewAuthors((newAuthors) => {
-				return [...newAuthors, author];
-			});
+			setCourseAuthors((newAuthors) => [...newAuthors, author]);
 			authorsToAdd.splice(
 				authorsToAdd.findIndex((v) => v.id === author.id),
 				1
@@ -60,8 +58,8 @@ const App = () => {
 			setAuthorsToAdd((authorsToAdd) => {
 				return [...authorsToAdd, author];
 			});
-			newAuthors.splice(
-				newAuthors.findIndex((v) => v.id === author.id),
+			courseAuthors.splice(
+				courseAuthors.findIndex((v) => v.id === author.id),
 				1
 			);
 		}
@@ -71,11 +69,14 @@ const App = () => {
 		setAuthorsToAdd((authorsToAdd) => {
 			return [...authorsToAdd, author];
 		});
+		setAuthors((listAuthor) => {
+			return [...listAuthor, author];
+		});
 	};
 
 	React.useEffect(() => {
 		if (searchTerm === '') setSearchResults(courses);
-	}, [searchTerm, courses, authorsToAdd.length, authors]);
+	}, [searchTerm, courses, authorsToAdd, courseAuthors]);
 
 	return (
 		<div>
@@ -95,16 +96,16 @@ const App = () => {
 							></Button>
 						</MainHeaderButton>
 					</MainHeader>
-					<CourseList courses={searchResults} authors={authors} />
+					<CourseList courses={searchResults} authors={authorsToAdd} />
 				</MainContainer>
 			)}
 			{!IsMainContainer && (
 				<CreateCourse
-					onCreateCourse={createCourse}
+					onCreateCourse={onCreateCourse}
 					authors={authorsToAdd}
 					onAddAuthor={onAddAuthor}
 					onCreateAuthor={onCreateAuthor}
-					newAuthorsCourse={newAuthors}
+					courseAuthors={courseAuthors}
 					onRevomeAuthor={onRevomeAuthor}
 				></CreateCourse>
 			)}

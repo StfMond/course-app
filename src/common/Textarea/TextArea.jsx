@@ -10,8 +10,10 @@ export const TextArea = ({
 	name,
 	cols,
 	rows,
+	minLength,
 }) => (
 	<TextContainer
+		minLength={minLength}
 		id={id}
 		name={name}
 		placeholder={placeholder}

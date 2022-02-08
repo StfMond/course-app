@@ -6,6 +6,7 @@ export const Card = styled.div`
 	margin-bottom: 1rem;
 	border: 1px solid #0d0;
 	box-sizing: border-box;
+	width: 100%;
 `;
 
 export const CourseInfo = styled.div`
@@ -17,11 +18,13 @@ export const CourseInfo = styled.div`
 export const Title = styled.div`
 	font-weight: bold;
 	font-size: 2rem;
+	width: 100%;
 	padding-bottom: 1rem;
 `;
 
 export const Description = styled.div`
 	font-size: 0.9rem;
+	width: 100%;
 `;
 
 export const MetadataContainer = styled.div`

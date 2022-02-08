@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
+import {
+	CREATE_AUTHOR_BUTTON_TEXT,
+	PLACEHOLDER_NAME_TEXT,
+} from '../../constants';
+
 import {
 	ButtonContainer,
 	InputContainer,
 } from '../CreateCouse/CreateCourse.styled';
-import { v4 as uuidv4 } from 'uuid';
 
 export const CreateAuthor = ({ onCreateAuthor }) => {
 	const [authorName, setAuthorName] = useState('');
@@ -23,11 +29,14 @@ export const CreateAuthor = ({ onCreateAuthor }) => {
 					<label for='author'>Author name</label>
 					<Input
 						id='author'
-						placeholder='Enter title...'
+						placeholder={PLACEHOLDER_NAME_TEXT}
 						onChange={(e) => setAuthorName(e.target.value)}
 					/>
 					<ButtonContainer>
-						<Button onClick={handleCreateAuthor} text='Create author'></Button>
+						<Button
+							onClick={handleCreateAuthor}
+							text={CREATE_AUTHOR_BUTTON_TEXT}
+						></Button>
 					</ButtonContainer>
 				</form>
 			</InputContainer>

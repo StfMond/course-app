@@ -1,3 +1,18 @@
+export const HEADER_BUTTON_TEXT = 'Logout';
+export const EMPTY_FIELDS = 'Please, fill in all fields';
+export const CREATE_COURSE_BUTTON_TEXT = 'Create Course';
+export const CREATE_AUTHOR_BUTTON_TEXT = 'Create author';
+export const ADD_AUTHOR_BUTTON_TEXT = 'Add author';
+export const REMOVE_AUTHOR_BUTTON_TEXT = 'Remove author';
+export const PLACEHOLDER_DURATION_TEXT = 'Enter duration in minutes...';
+export const PLACEHOLDER_DESCRIPTION_TEXT = 'Enter description...';
+export const PLACEHOLDER_TITLE_TEXT = 'Enter title...';
+export const PLACEHOLDER_NAME_TEXT = 'Enter name...';
+export const PLACEHOLDER_DEFAULT_TEXT = 'Create Course';
+export const PLACEHOLDER_SEARCH_TEXT = 'Search';
+export const PLACEHOLDER_COURSE_TEXT = 'Enter course name...';
+export const PLACEHOLDER_SHOW_COURSE_TEXT = 'Show Course';
+
 export const mockedCoursesList = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',

@@ -1,5 +1,11 @@
 import React from 'react';
+
 import { Button } from '../../common/Button/Button';
+import {
+	ADD_AUTHOR_BUTTON_TEXT,
+	REMOVE_AUTHOR_BUTTON_TEXT,
+} from '../../constants';
+
 import { Authors, AuthorRow, CourseListEmpty } from './AuthorList.styled';
 
 export const AuthorList = ({
@@ -26,7 +32,7 @@ export const AuthorList = ({
 							<div>{author.name}</div>
 							<Button
 								onClick={() => handleAddAuthor(author)}
-								text='Add author'
+								text={ADD_AUTHOR_BUTTON_TEXT}
 							/>
 						</AuthorRow>
 					))}
@@ -45,7 +51,7 @@ export const AuthorList = ({
 							<div>{author.name}</div>
 							<Button
 								onClick={() => handleRemoveAuthor(author)}
-								text='Remove author'
+								text={REMOVE_AUTHOR_BUTTON_TEXT}
 							/>
 						</AuthorRow>
 					))}

@@ -6,7 +6,10 @@ import {
 	MetadataContainer,
 	Title,
 } from './CourseCard.styled';
+
 import { Button } from '../../../../common/Button/Button';
+
+import { PLACEHOLDER_SHOW_COURSE_TEXT } from '../../../../constants';
 
 export const CourseCard = (props) => {
 	return (
@@ -33,7 +36,7 @@ export const CourseCard = (props) => {
 					</CourseInfo>
 				</CourseMetadata>
 				<div>
-					<Button onClick='' text='Show Course'></Button>
+					<Button onClick='' text={PLACEHOLDER_SHOW_COURSE_TEXT}></Button>
 				</div>
 			</MetadataContainer>
 		</Card>
