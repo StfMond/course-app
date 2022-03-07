@@ -12,20 +12,19 @@ import {
 	PLACEHOLDER_DURATION_TEXT,
 	PLACEHOLDER_DESCRIPTION_TEXT,
 	PLACEHOLDER_TITLE_TEXT,
-} from '../../constants';
+} from '../../constants/constants';
 
 import {
-	Header,
 	Wrapper,
 	Description,
-	MainContainer,
 	MainLeft,
 	Content,
-	InputContainer,
 	MainRight,
 } from './CreateCourse.styled';
+import { CreateCourseProps } from './CreateCourse.types';
+import { Header, InputContainer, MainContainerForm } from '../App/App.styled';
 
-export const CreateCourse = ({
+export const CreateCourse: React.FC<CreateCourseProps> = ({
 	onCreateCourse,
 	authors,
 	courseAuthors,
@@ -41,13 +40,13 @@ export const CreateCourse = ({
 		authors: [],
 	});
 
-	const handleChange = (e) => {
+	const handleChange = (e: any) => {
 		const name = e.target.name;
 		const value = e.target.value;
 		setCourse({ ...course, [name]: value });
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		if (course.title && course.description && course.duration) {
 			const newCourse = {
@@ -59,7 +58,7 @@ export const CreateCourse = ({
 		} else alert(EMPTY_FIELDS);
 	};
 
-	const handleDuration = (e) => {
+	const handleDuration = (e: any) => {
 		const re = /^[0-9\b]+$/;
 		if (e.target.value === '' || re.test(e.target.value)) {
 			setDuration(e.target.value);
@@ -72,27 +71,34 @@ export const CreateCourse = ({
 			<Wrapper>
 				<Header>
 					<div>
-						<label for='title'>Title</label>
+						<label htmlFor='title'>Title</label>
 						<Input
 							id='title'
 							name='title'
-							class='main-input'
+							className='main-input'
 							placeholder={PLACEHOLDER_TITLE_TEXT}
 							value={course.title}
 							onChange={handleChange}
+							type={undefined}
+							pattern={undefined}
+							minLength={undefined}
 						/>
 					</div>
 					<div>
-						<Button onClick={handleSubmit} text={CREATE_COURSE_BUTTON_TEXT} />
+						<Button
+							onClick={handleSubmit}
+							text={CREATE_COURSE_BUTTON_TEXT}
+							id='btnCreateCourse'
+						/>
 					</div>
 				</Header>
 				<Description>
-					<label for='description'>Description</label>
+					<label htmlFor='description'>Description</label>
 					<TextArea
 						name='description'
 						id='description'
-						cols='1'
-						rows='5'
+						cols={1}
+						rows={5}
 						placeholder={PLACEHOLDER_DESCRIPTION_TEXT}
 						value={course.description}
 						onChange={handleChange}
@@ -100,7 +106,7 @@ export const CreateCourse = ({
 					/>
 				</Description>
 			</Wrapper>
-			<MainContainer>
+			<MainContainerForm>
 				<MainLeft>
 					<Content>
 						<CreateAuthor onCreateAuthor={onCreateAuthor}></CreateAuthor>
@@ -110,7 +116,7 @@ export const CreateCourse = ({
 							<h2>Duration</h2>
 						</div>
 						<InputContainer>
-							<label for='duration'>Duration</label>
+							<label htmlFor='duration'>Duration</label>
 							<Input
 								id='duration'
 								type='text'
@@ -119,11 +125,13 @@ export const CreateCourse = ({
 								value={course.duration}
 								onChange={handleDuration}
 								pattern='[0-9]*'
+								minLength={undefined}
+								className={undefined}
 							/>
 						</InputContainer>
-						<div class='duration-timer'>
+						<div className='duration-timer'>
 							Duration:{' '}
-							<span class='bold-text'>
+							<span className='bold-text'>
 								{Math.floor(duration / 60)}:{duration % 60}
 							</span>{' '}
 							hours
@@ -138,7 +146,7 @@ export const CreateCourse = ({
 						onRevomeAuthor={onRevomeAuthor}
 					></AuthorList>
 				</MainRight>
-			</MainContainer>
+			</MainContainerForm>
 		</div>
 	);
 };

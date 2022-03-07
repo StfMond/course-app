@@ -1,4 +1,6 @@
-export const HEADER_BUTTON_TEXT = 'Logout';
+import { Course } from '../types/types.d';
+
+export const LOGOUT_BUTTON_TEXT = 'Logout';
 export const EMPTY_FIELDS = 'Please, fill in all fields';
 export const CREATE_COURSE_BUTTON_TEXT = 'Create Course';
 export const CREATE_AUTHOR_BUTTON_TEXT = 'Create author';
@@ -12,6 +14,9 @@ export const PLACEHOLDER_DEFAULT_TEXT = 'Create Course';
 export const PLACEHOLDER_SEARCH_TEXT = 'Search';
 export const PLACEHOLDER_COURSE_TEXT = 'Enter course name...';
 export const PLACEHOLDER_SHOW_COURSE_TEXT = 'Show Course';
+export const PLACEHOLDER_EMAIL_TEXT = 'Enter email...';
+export const PLACEHOLDER_PASSWORD_TEXT = 'Enter password...';
+export const REGISTRATION_TEXT = 'Registration';
 
 export const mockedCoursesList = [
 	{
@@ -48,7 +53,8 @@ specimen book.`,
 			'095a1817-d45b-4ed7-9cf7-b2417bcbf748',
 		],
 	},
-];
+] as unknown as Course[];
+
 export const mockedAuthorsList = [
 	{
 		id: '27cc3006-e93a-4748-8ca8-73d06aa93b6d',

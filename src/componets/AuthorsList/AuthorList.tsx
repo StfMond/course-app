@@ -4,20 +4,22 @@ import { Button } from '../../common/Button/Button';
 import {
 	ADD_AUTHOR_BUTTON_TEXT,
 	REMOVE_AUTHOR_BUTTON_TEXT,
-} from '../../constants';
+} from '../../constants/constants';
+import { Author } from '../../types/types.d';
 
 import { Authors, AuthorRow, CourseListEmpty } from './AuthorList.styled';
+import { AuthorListProps } from './AuthorList.types';
 
-export const AuthorList = ({
+export const AuthorList: React.FC<AuthorListProps> = ({
 	authors,
 	onAddAuthor,
 	newAuthorsCourse,
 	onRevomeAuthor,
 }) => {
-	const handleAddAuthor = (author) => {
+	const handleAddAuthor = (author: Author) => {
 		onAddAuthor(author);
 	};
-	const handleRemoveAuthor = (author) => {
+	const handleRemoveAuthor = (author: Author) => {
 		onRevomeAuthor(author);
 	};
 	return (
@@ -27,12 +29,13 @@ export const AuthorList = ({
 					<h2>Authors</h2>
 				</div>
 				<div>
-					{authors.map((author) => (
+					{authors.map((author: Author) => (
 						<AuthorRow>
 							<div>{author.name}</div>
 							<Button
 								onClick={() => handleAddAuthor(author)}
 								text={ADD_AUTHOR_BUTTON_TEXT}
+								id={'btnAddAuthor'}
 							/>
 						</AuthorRow>
 					))}
@@ -46,12 +49,13 @@ export const AuthorList = ({
 					{newAuthorsCourse.length === 0 && (
 						<CourseListEmpty>Author list is empty</CourseListEmpty>
 					)}
-					{newAuthorsCourse?.map((author) => (
+					{newAuthorsCourse?.map((author: Author) => (
 						<AuthorRow>
 							<div>{author.name}</div>
 							<Button
 								onClick={() => handleRemoveAuthor(author)}
 								text={REMOVE_AUTHOR_BUTTON_TEXT}
+								id={'btnNewAuthor'}
 							/>
 						</AuthorRow>
 					))}

@@ -1,7 +1,8 @@
 import React from 'react';
-import { InputContainer } from './Input.styled.jsx';
+import { InputContainer } from './Input.styled';
+import { InputProps } from './Input.types';
 
-export const Input = ({
+export const Input: React.FC<InputProps> = ({
 	id,
 	name,
 	placeholder,
@@ -10,6 +11,7 @@ export const Input = ({
 	type,
 	pattern,
 	minLength,
+	className,
 }) => (
 	<InputContainer
 		id={id}
@@ -20,5 +22,6 @@ export const Input = ({
 		type={type}
 		pattern={pattern}
 		minLength={minLength}
+		className={className}
 	></InputContainer>
 );

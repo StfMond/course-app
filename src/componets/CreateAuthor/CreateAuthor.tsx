@@ -6,16 +6,15 @@ import { Input } from '../../common/Input/Input';
 import {
 	CREATE_AUTHOR_BUTTON_TEXT,
 	PLACEHOLDER_NAME_TEXT,
-} from '../../constants';
+} from '../../constants/constants';
+import { ButtonContainer, InputContainer } from '../App/App.styled';
+import { CreateAuthorProps } from './CreateAuthor.types';
 
-import {
-	ButtonContainer,
-	InputContainer,
-} from '../CreateCouse/CreateCourse.styled';
-
-export const CreateAuthor = ({ onCreateAuthor }) => {
+export const CreateAuthor: React.FC<CreateAuthorProps> = ({
+	onCreateAuthor,
+}) => {
 	const [authorName, setAuthorName] = useState('');
-	const handleCreateAuthor = (e) => {
+	const handleCreateAuthor = (e: any) => {
 		e.preventDefault();
 		onCreateAuthor({ id: uuidv4(), name: authorName });
 	};
@@ -26,16 +25,17 @@ export const CreateAuthor = ({ onCreateAuthor }) => {
 			</div>
 			<InputContainer>
 				<form onSubmit={handleCreateAuthor}>
-					<label for='author'>Author name</label>
+					<label htmlFor='author'>Author name</label>
 					<Input
 						id='author'
 						placeholder={PLACEHOLDER_NAME_TEXT}
-						onChange={(e) => setAuthorName(e.target.value)}
+						onChange={(e: any) => setAuthorName(e.target.value)}
 					/>
 					<ButtonContainer>
 						<Button
 							onClick={handleCreateAuthor}
 							text={CREATE_AUTHOR_BUTTON_TEXT}
+							id='btnCreateAuthor'
 						></Button>
 					</ButtonContainer>
 				</form>
